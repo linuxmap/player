@@ -2,10 +2,9 @@ import QtQuick.Layouts 1.0
 import Material 0.2
 import Material.ListItems 0.1 as ListItem
 import QtQuick 2.5
-import QmlVlc 0.1
 import QtMultimedia 5.0
 
-VlcVideoSurface {
+Video {
     source: player
     anchors.fill: parent
 

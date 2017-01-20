@@ -3,7 +3,6 @@ import Material 0.2
 import Material.ListItems 0.1 as ListItem
 import QtQuick 2.5
 import QtQuick.Dialogs 1.0
-import QmlVlc 0.1
 import QtMultimedia 5.0
 
 Item {
@@ -31,12 +30,12 @@ Item {
     function addCurrentToRecentlyPlayed () {
         var l = recentlyPlayedModel.count
         for(var i=0; i<l; i++)
-            if(recentlyPlayedModel.get(i).url == player.mrl)
+            if(recentlyPlayedModel.get(i).url == player.source)
                 return
-        recentlyPlayedModel.append({"name" : currentMedia.title, "url" : player.mrl, "type" : isAudio ? "audio" : "video", "artist": currentMedia.artist})
+        recentlyPlayedModel.append({"name" : currentMedia.title, "url" : player.source, "type" : isAudio ? "audio" : "video", "artist": currentMedia.artist})
     }
 
-    VlcPlayer {
+    Video {
         id: player
         signal selected()
         onSelected: filedialog.toPlay ? addToPlay() : addToPlaylist()
@@ -61,11 +60,13 @@ Item {
 
         }
 
+/* TODO:
         onMediaPlayerPlaying: {
             currentMedia = mediaDescription;
             isAudio = (video.height == 0) ? true : false
             addCurrentToRecentlyPlayed();
         }
+*/
     }
 
     PlayerSurface { }
