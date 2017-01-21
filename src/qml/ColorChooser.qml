@@ -1,5 +1,6 @@
 import QtQuick 2.0
-import Material 0.2
+import Fluid.Controls 1.0 as FluidControls
+import Fluid.Material 1.0 as FluidMaterial
 
 
 Item {
@@ -8,26 +9,25 @@ Item {
     property string title
     property Item colorPicker
 
-    width: Units.dp(300)
-    height: Units.dp(196)
+    width: 300
+    height: 196
 
-    Label {
+    FluidControls.TitleLabel {
         id: lblTitle
-        style: "dialog"
         font.family: root.fontFamily
         text: title || qsTr("Choose a color")
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.margins: Units.dp(24)
+        anchors.margins: 24
 
     }
 
     Grid {
         columns: 7
-        spacing: Units.dp(8)
+        spacing: 8
         id: grid
         anchors.top: lblTitle.bottom
-        anchors.topMargin: Units.dp(24)
+        anchors.topMargin: 24
         anchors.horizontalCenter: parent.horizontalCenter
 
         Repeater {
@@ -40,14 +40,15 @@ Item {
             ]
 
             Rectangle {
-                width: Units.dp(30)
-                height: Units.dp(30)
-                radius: Units.dp(2)
-                color: Palette.colors[modelData]["500"]
-                border.width: if (color === colorChooser.color) { Units.dp(2) } else { 0 }
-                border.color: Theme.alpha("#000", 0.26)
+                width: 30
+                height: 30
+                radius: 2
+                // TODO: color
+                //color: Palette.colors[modelData]["500"]
+                border.width: color === colorChooser.color ? 2 : 0
+                //border.color: Theme.alpha("#000", 0.26)
 
-                Ink {
+                FluidMaterial.Ripple {
                     anchors.fill: parent
 
                     onPressed: {

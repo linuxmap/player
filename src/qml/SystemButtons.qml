@@ -1,8 +1,6 @@
 import QtQuick 2.4
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
 import QtQuick.Layouts 1.0
-import QtQuick.Controls 1.2 as Controls
+import Fluid.Controls 1.0 as FluidControls
 
 Rectangle {
     id:_back
@@ -22,26 +20,23 @@ Rectangle {
             top: parent.top
         }
 
-        spacing: Units.dp(10)
+        spacing: 10
 
-        Rectangle {
-            width:1
-            color: "transparent"
+        Item {
+            width: 1
         }
-        IconButton {
+        FluidControls.IconButton {
             iconSource: "qrc:///images/window-minimize.svg"
-            width: Units.dp(20)
-            height: width
-            color: _back.iconsColor
+            iconSize: 20
+            iconColor: _back.iconsColor
             onClicked: _back.showMinimized()
         }
 
-        IconButton {
+        FluidControls.IconButton {
             iconSource: root.visibility == 4 ? "qrc:///images/window-restore.svg" : "qrc:///images/window-maximize.svg"
-            width: Units.dp(20)
             id: sysbtn_max
-            height: width
-            color: _back.iconsColor
+            iconSize: 20
+            iconColor: _back.iconsColor
             onClicked: {
                 if(root.visibility == 2)
                     _back.showMaximized();
@@ -50,11 +45,10 @@ Rectangle {
             }
         }
 
-        IconButton {
+        FluidControls.IconButton {
             iconSource: "qrc:///images/window-close.svg"
-            width: Units.dp(20)
-            height: width
-            color: _back.iconsColor
+            iconSize: 20
+            iconColor: _back.iconsColor
             onClicked: _back.close()
         }
     }

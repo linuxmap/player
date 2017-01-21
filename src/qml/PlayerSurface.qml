@@ -1,8 +1,8 @@
 import QtQuick.Layouts 1.0
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
 import QtQuick 2.5
+import QtQuick.Controls 2.0
 import QtMultimedia 5.0
+import Fluid.Controls 1.0 as FluidControls
 
 Video {
     source: player
@@ -29,24 +29,21 @@ Video {
         anchors.topMargin: topBar.height + Units.dp(15)
         anchors.bottomMargin: bottomBar.height + Units.dp(15)
         anchors.verticalCenter: parent.verticalCenter
-        Label {
+        FluidControls.DisplayLabel {
             id: txtTitle
             width: parent.width
             wrapMode: Text.WordWrap
-            style: "display1"
             text: currentMedia.title
             color: "white"
         }
-        Label {
-            style: "headline"
+        FluidControls.HeadlineLabel {
             width: parent.width
             wrapMode: Text.WordWrap
             text: currentMedia.artist
             color: "white"
             opacity: 0.8
         }
-        Label {
-            style: "headline"
+        FluidControls.HeadlineLabel {
             wrapMode: Text.WordWrap
             width: parent.width
             text: currentMedia.album

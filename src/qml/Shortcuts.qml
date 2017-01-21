@@ -1,28 +1,27 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.2 as Controls
-import Material.Extras 0.1
+import Fluid.Controls 1.0 as FluidControls
 
 
 Item {
-    Controls.Action {
+    FluidControls.Action {
         shortcut: "Space"
         onTriggered: {
             player.togglePause()
         }
     }
-    Controls.Action {
+    FluidControls.Action {
         shortcut: "Ctrl+N"
         onTriggered: {
             root.app.createWindow()
         }
     }
-    Controls.Action {
+    FluidControls.Action {
         shortcut: "Esc"
         onTriggered: {
         if(root.fullscreen) showNormal(); else null();
         }
     }
-    Controls.Action {
+    FluidControls.Action {
         shortcut: "Ctrl+F"
         onTriggered: {
         if(root.fullscreen) null(); else showFullScreen();

@@ -1,6 +1,5 @@
 import QtQuick 2.5
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
+import Fluid.Controls 1.0 as FluidControls
 
 Rectangle {
     id: noMediaSurface
@@ -13,19 +12,20 @@ Rectangle {
     color: "transparent"
     Column {
         spacing: Units.dp(10)
-        Label {
+        FluidControls.DisplayLabel {
             text: "Recent"
-            style: "display2"
+            level: 2
         }
 
         ListView {
             width: noMediaSurface.width
             height:noMediaSurface.height - Units.dp(10) - topBar.height
             model: application.recentlyPlayedModel
-            delegate: ListItem.Standard {
+            delegate: FluidControls.ListItem {
                 iconName: type == "audio" ? "av/album" : "av/movie"
                 text: name + "   <font color='#757575'>"+ (artist ? "- " + artist : "") + "</font>"
-                backgroundColor: "white"
+                // FIXME: backgroundColor doesn't exist
+                //backgroundColor: "white"
                 onClicked: player.mrl = url
             }
         }

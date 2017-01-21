@@ -1,14 +1,14 @@
 import QtQuick 2.0
-import Material 0.2
+import QtQuick.Controls 2.0
 
 
-Dropdown {
+Popup {
     id: colorPicker
     property alias color: colorChooser.color
     property alias titel: colorChooser.title
 
-    width: Units.dp(300)
-    height: Units.dp(196)
+    width: 300
+    height: 196
 
     ColorChooser {
         id: colorChooser

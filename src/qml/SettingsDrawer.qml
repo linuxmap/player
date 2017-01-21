@@ -1,12 +1,12 @@
 import QtQuick 2.5
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
+import Fluid.Controls 1.0 as FluidControls
 
-View {
+Item {
     id: settingsRoot
     z:2
-    backgroundColor: "white"
-    width: Units.dp(300)
+    width: 300
     anchors {
         left: parent.left
         top: parent.top
@@ -33,24 +33,23 @@ View {
     Column {
         anchors.fill: parent
         Item {
-            height: Units.dp(50)
+            height: 50
             width: parent.width
-            Label {
+            FluidControls.HeadlineLabel {
                 anchors {
                     left: parent.left
                     verticalCenter: parent.verticalCenter
-                    margins: Units.dp(15)
+                    margins: 15
                 }
 
                 text: "Settings"
-                style: "headline"
             }
         }
-        ListItem.Standard {
+        FluidControls.ListItem {
             text: "Accent Color"
-            Rectangle {
+            rightItem: Rectangle {
                 id: accentcolorSample
-                width: Units.dp(30)
+                width: 30
                 height: width
                 radius: width*0.5
                 color: accentColorPicker.color
@@ -58,23 +57,25 @@ View {
                         top: parent.top
                         right: parent.right
                         topMargin:5
-                        rightMargin: Units.dp(15)
+                        rightMargin: 15
                 }
                 MouseArea {
                     anchors.fill: parent
-                    onPressed: accentColorPicker.open(accentcolorSample, Units.dp(30), Units.dp(-4))
+                    onPressed: accentColorPicker.open()
                 }
             }
         }
         ColorPicker {
             id: accentColorPicker
-            color: theme.accentColor
+            x: accentcolorSample.x + 30
+            y: accentcolorSample.y - 4
+            color: Material.accentColor
         }
-        ListItem.Standard {
+        FluidControls.ListItem {
             text: "Primary Color"
-            Rectangle {
+            rightItem: Rectangle {
                 id: primarycolorSample
-                width: Units.dp(30)
+                width: 30
                 height: width
                 radius: width*0.5
                 color: primaryColorPicker.color
@@ -82,42 +83,45 @@ View {
                         top: parent.top
                         right: parent.right
                         topMargin:5
-                        rightMargin: Units.dp(15)
+                        rightMargin: 15
                 }
                 MouseArea {
                     anchors.fill: parent
-                    onPressed: primaryColorPicker.open(primarycolorSample, Units.dp(30), Units.dp(-4))
+                    onPressed: primaryColorPicker.open()
                 }
             }
         }
         ColorPicker {
             id: primaryColorPicker
-            color: theme.primaryColor
+            x: primarycolorSample.x + 30
+            y: primarycolorSample.y - 4
+            color: Material.primaryColor
         }
     }
     Row {
         anchors{
             bottom: parent.bottom
             horizontalCenter: parent.horizontalCenter
-            margins: Units.dp(15)
+            margins: 15
         }
-        spacing: Units.dp(15)
+        spacing: 15
         Button {
             text: "Save"
-            elevation: 1
-            backgroundColor: theme.accentColor
+            Material.elevation: 1
+            // FIXME: backgroundColor doesn't exist
+            //backgroundColor: theme.accentColor
             onClicked: {
-                theme.accentColor = accentColorPicker.color
-                theme.primaryColor = primaryColorPicker.color
+                Material.accentColor = accentColorPicker.color
+                Material.primaryColor = primaryColorPicker.color
                 close()
             }
         }
         Button {
             text: "reset"
-            elevation: 1
+            Material.elevation: 1
             onClicked: {
-                accentColorPicker.color = theme.accentColor
-                primaryColorPicker.color = theme.primaryColor
+                accentColorPicker.color = Material.accentColor
+                primaryColorPicker.color = Material.primaryColor
                 close()
             }
         }

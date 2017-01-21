@@ -1,14 +1,15 @@
 import QtQuick.Layouts 1.0
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
 import QtQuick 2.5
 import QtMultimedia 5.0
 import QtQuick.Dialogs 1.0
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
 import Qt.labs.settings 1.0
+import Fluid.Controls 1.0 as FluidControls
 
 
 
-MaterialWindow {
+FluidControls.FluidWindow {
     id: root
     width: 750
     height: 430
@@ -17,12 +18,8 @@ MaterialWindow {
     property bool fullscreen: visibility == 5
     property bool forceBars: player.state != "3"
 
-    theme {
-            id: theme
-            primaryColor: "#F44336"
-            primaryDarkColor: "#D32F2F"
-            accentColor: "#FF5722"
-        }
+    Material.primary: Material.theme == Material.Light ? Material.Red : "#D32F2F"
+    Material.accent: Material.DeepOrange
 
     visible: true
     property Settings settings: Settings {

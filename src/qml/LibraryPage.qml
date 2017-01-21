@@ -1,15 +1,17 @@
 import QtQuick 2.2
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
 import Qt.labs.folderlistmodel 2.1
 //import Username 1.0
+import Fluid.Controls 1.0 as FluidControls
 
-TabbedPage {
+FluidControls.TabbedPage {
     id: page
     title: "My Library"
-    backgroundColor: Palette.colors.grey[200]
+    // FIXME: backgroundColor is not available
+    //backgroundColor: Material.color(Material.Grey, Material.Shade200)
 
-    Tab {
+    FluidControls.Tab {
         title: "Music"
 
         ListView {
@@ -18,28 +20,27 @@ TabbedPage {
 
             FolderListModel {
                 folder: musicDir
-                id: folderModel
+                id: musicFolderModel
                 nameFilters: ["*.mp3"]
             }
 
             Component {
-                id: fileDelegate
-                View {
-                    height: Units.dp(40)
+                id: musicDelegate
+                Pane {
+                    height: 40
                     anchors {
                         left: parent.left
                         right: parent.right
-                        margins: Units.gu(1)
+                        margins: FluidControls.Units.gu(1)
                     }
 
-                    backgroundColor: "white"
-                    elevation: 1
+                    Material.elevation: 1
                     Label {
                         anchors {
                             left: parent.left
                             right: parent.right
                             verticalCenter: parent.verticalCenter
-                            margins: Units.dp(10)
+                            margins: 10
                         }
                         text: fileName
                         MouseArea {
@@ -50,12 +51,12 @@ TabbedPage {
                 }
             }
 
-            model: folderModel
-            delegate: fileDelegate
+            model: musicFolderModel
+            delegate: musicDelegate
         }
     }
 
-    Tab {
+    FluidControls.Tab {
         title: "Videos"
 
         ListView {
@@ -64,28 +65,27 @@ TabbedPage {
 
             FolderListModel {
                 folder: moviesDir
-                id: folderModel
+                id: moviesFolderModel
                 nameFilters: ["*.mp4", "*.mkv", "*.wmv"]
             }
 
             Component {
-                id: fileDelegate
-                View {
-                    height: Units.dp(40)
+                id: movieDelegate
+                Pane {
+                    height: 40
                     anchors {
                         left: parent.left
                         right: parent.right
-                        margins: Units.gu(1)
+                        margins: FluidControls.Units.gu(1)
                     }
 
-                    backgroundColor: "white"
-                    elevation: 1
+                    Material.elevation: 1
                     Label {
                         anchors {
                             left: parent.left
                             right: parent.right
                             verticalCenter: parent.verticalCenter
-                            margins: Units.dp(10)
+                            margins: 10
                         }
                         text: fileName
                         MouseArea {
@@ -96,16 +96,16 @@ TabbedPage {
                 }
             }
 
-            model: folderModel
-            delegate: fileDelegate
+            model: moviesFolderModel
+            delegate: movieDelegate
         }
     }
 
 
     //I couldn't figure out what this is supposed to be. Is it just a placeholder or is there a plan for it? -CN
-    Tab {
+    FluidControls.Tab {
         title: "Projects"
 
-        Rectangle { color: Palette.colors.purple["200"] }
+        Rectangle { color: Material.color(Material.Purple, Material.Shade200) }
     }
 }

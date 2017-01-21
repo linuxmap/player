@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/PlayerWindow.qml</file>
-        <file>qml/MaterialWindow.qml</file>
         <file>qml/ResizeArea.qml</file>
         <file>qml/SystemBar.qml</file>
         <file>qml/SystemButtons.qml</file>

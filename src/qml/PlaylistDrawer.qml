@@ -1,12 +1,12 @@
 import QtQuick 2.5
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
+import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
+import Fluid.Controls 1.0 as FluidControls
 
-View {
+Item {
     id: playlistRoot
     z:10
-    backgroundColor: "white"
-    width: Units.dp(350)
+    width: 350
     anchors {
         right: parent.right
         top: parent.top
@@ -33,25 +33,24 @@ View {
     Column  {
         anchors.fill: parent
         Item {
-            height: Units.dp(50)
+            height: 50
             width: parent.width
-            Label {
+            FluidControls.HeadlineLabel {
                 id: label
                 anchors {
                     left: parent.left
                     verticalCenter: parent.verticalCenter
-                    margins: Units.dp(15)
+                    margins: 15
                 }
 
                 text: "Playlist"
-                style: "headline"
             }
-            IconButton {
+            FluidControls.IconButton {
                 id: clearPlaylist
 
                 anchors {
                     left: label.right
-                    leftMargin: Units.dp(16)
+                    leftMargin: 16
                     verticalCenter: parent.verticalCenter
                 }
                 iconName: "action/done_all"
@@ -65,7 +64,7 @@ View {
                 id: labelclr
                 anchors {
                     left: clearPlaylist.right
-                    leftMargin: Units.dp(8)
+                    leftMargin: 8
                     verticalCenter: parent.verticalCenter
                 }
 
@@ -85,7 +84,7 @@ View {
                 iconsColor: "grey"
                 anchors {
                     top: parent.top
-                    margins: Units.dp(15)
+                    margins: 15
                     right: parent.right
                 }
             }
@@ -94,7 +93,7 @@ View {
             model: root.currentPlaylistModel
             width: playlistRoot.width
             height: playlistRoot.height
-            delegate: ListItem.Standard {
+            delegate: FluidControls.ListItem {
                 id: delegate
                 text: title
                 iconName: index == player.playlist.currentItem ? "av/play_arrow" : ""
@@ -106,14 +105,14 @@ View {
         anchors{
             bottom: parent.bottom
             horizontalCenter: parent.horizontalCenter
-            margins: Units.dp(0)
+            margins: 0
         }
-        spacing: Units.dp(0)
+        spacing: 0
 
         Rectangle {
             color: "white"
             width: playlistDrawer.width
-            height: Units.dp(50)
+            height: 50
 
 
         Button {
@@ -124,13 +123,13 @@ View {
                 top: parent.top
                 bottom: parent.bottom
 
-                rightMargin: Units.dp(30)
-                leftMargin: Units.dp(30)
-                bottomMargin: Units.dp(5)
-                topMargin: Units.dp(7)
+                rightMargin: 30
+                leftMargin: 30
+                bottomMargin: 5
+                topMargin: 7
             }
             id: addbutton
-            elevation: 2
+            Material.elevation: 2
             onClicked: {
                 filedialog.toPlay = false;
                 filedialog.visible = true;

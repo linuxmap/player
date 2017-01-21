@@ -1,9 +1,8 @@
 import QtQuick.Layouts 1.0
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
 import QtQuick 2.5
 import QtQuick.Dialogs 1.0
 import QtMultimedia 5.0
+import Fluid.Material 1.0 as FluidMaterial
 
 Item {
     anchors.fill: parent
@@ -83,7 +82,7 @@ Item {
         visible: !noMedia
     }
 
-    ActionButton {
+    FluidMaterial.ActionButton {
         iconName: "file/folder_open"
         visible: noMedia
         anchors{

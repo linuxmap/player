@@ -1,7 +1,7 @@
 import QtQuick.Layouts 1.0
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
 import QtQuick 2.5
+import QtQuick.Controls 2.0
+import Fluid.Controls 1.0 as FluidControls
 
 Rectangle {
     id: top_bar
@@ -12,7 +12,7 @@ Rectangle {
         right: parent.right
         left: parent.left
     }
-    height: Units.dp(60)
+    height: 60
     gradient: Gradient {
         GradientStop { position: 0.0; color: root.noMedia ? theme.primaryColor :  Qt.rgba(0,0,0,0.4) }
         GradientStop { position: 1.0; color: root.noMedia ? theme.primaryColor :  "transparent" }
@@ -25,100 +25,95 @@ Rectangle {
         anchors {
             left: parent.left
             top: parent.top
-            margins: Units.dp(15)
+            margins: 15
         }
-        spacing: Units.dp(10)
-        IconButton {
+        spacing: 10
+        FluidControls.IconButton {
             id: menuButton
             iconName: "navigation/menu"
-            color: "white"
-            size: Units.dp(30)
+            iconColor: "white"
+            iconSize: 30
             onClicked: menu.open(menuButton,menu.width - menuButton.width,0)
         }
-        IconButton {
+        FluidControls.IconButton {
             id: lockButton
             visible: false
             iconName: "action/lock"
-            color: "white"
-            size: Units.dp(20)
+            iconColor: "white"
+            iconSize: 20
             onClicked: forceBars = !forceBars
         }
-        IconButton {
+        FluidControls.IconButton {
             id: libraryButton
             visible: true
             iconName: "av/my_library_music"
-            color: "white"
-            size: Units.dp(30)
+            iconColor: "white"
+            iconSize: 30
             onClicked: pageStack.push(libraryPage)
         }
-        Label {
+        FluidControls.TitleLabel {
             text: "Liri Player"
-            style: "title"
             color: "white"
             visible: root.noMedia
         }
-        Label {
+        FluidControls.TitleLabel {
             text: root.currentMedia.title
-            style: "title"
             color: "white"
             visible: !root.noMedia && !root.isAudio
         }
 
     }
 
-    Dropdown {
+    Menu {
         id: menu
         objectName: "menu"
 
-        width: Units.dp(250)
-        height: columnView.height + Units.dp(16)
-
-        ColumnLayout {
-            id: columnView
-            width: parent.width
-            anchors.centerIn: parent
-            ListItem.Standard {
-                text: "Open"
-                iconName: "file/folder_open"
-                onClicked: {
-                    menu.close();
-                    filedialog.toPlay = true;
-                    filedialog.visible = true;
-                }
+        MenuItem {
+            text: "Open"
+            // FIXME: iconName doesn't exist
+            //iconName: "file/folder_open"
+            onClicked: {
+                menu.close();
+                filedialog.toPlay = true;
+                filedialog.visible = true;
             }
-            ListItem.Standard {
-                text: "Open and add to queue"
-                iconName: "av/queue_music"
-                onClicked: {
-                    menu.close();
-                    filedialog.toPlay = false;
-                    filedialog.visible = true;
-                }
+        }
+        MenuItem {
+            text: "Open and add to queue"
+            // FIXME: iconName doesn't exist
+            //iconName: "av/queue_music"
+            onClicked: {
+                menu.close();
+                filedialog.toPlay = false;
+                filedialog.visible = true;
             }
-            ListItem.Standard {
-                text: "Stop"
-                iconName: "av/stop"
-                visible: !root.noMedia
-                onClicked: {
-                    player.stop()
-                    menu.close()
-                }
+        }
+        MenuItem {
+            text: "Stop"
+            // FIXME: iconName doesn't exist
+            //iconName: "av/stop"
+            visible: !root.noMedia
+            onClicked: {
+                player.stop()
+                menu.close()
             }
-            ListItem.Standard {
-                text: "Settings"
-                iconName: "action/settings"
-                onClicked: {
-                    menu.close();
-                    settingsDrawer.open()
-                }
+        }
+        MenuItem {
+            text: "Settings"
+            // FIXME: iconName doesn't exist
+            //iconName: "action/settings"
+            onClicked: {
+                menu.close();
+                settingsDrawer.open()
             }
-            ListItem.Standard {
-                text: "Quit"
-                iconName: "action/exit_to_app"
-                onClicked: {
-                    menu.close()
-                    Qt.quit()
-                }
+        }
+        MenuItem {
+            text: "Quit"
+            // FIXME: iconName doesn't exist
+            //iconName: "action/exit_to_app"
+            onClicked: {
+                menu.close()
+                Qt.quit()
             }
         }
     }
@@ -136,7 +131,7 @@ Rectangle {
         anchors {
             right: parent.right
             top: parent.top
-            margins: Units.dp(15)
+            margins: 15
         }
     }
 }

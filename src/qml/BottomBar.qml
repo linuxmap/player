@@ -1,7 +1,7 @@
 import QtQuick.Layouts 1.0
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
 import QtQuick 2.5
+import QtQuick.Controls 2.0
+import Fluid.Controls 1.0 as FluidControls
 
 Rectangle {
     id: bottomBar
@@ -11,7 +11,7 @@ Rectangle {
         right: parent.right
         left: parent.left
     }
-    height: Units.dp(88)
+    height: 88
     gradient: Gradient {
         GradientStop { position: 0.0; color: "transparent" }
         GradientStop { position: 1.0; color: Qt.rgba(0,0,0,0.6) }
@@ -41,45 +41,44 @@ Rectangle {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
-            margins: Units.dp(15)
+            margins: 15
         }
-        spacing: -Units.dp(2)
+        spacing: -2
 
         Slider {
             value: player.position
             visible: player.state != "0"
-            darkBackground: true
             width: (bottomBar.width - parent.anchors.leftMargin - parent.anchors.rightMargin)
             onPressedChanged: player.time = value * player.length
         }
 
         Row {
-            spacing: Units.dp(10)
-            IconButton {
+            spacing: 10
+            FluidControls.IconButton {
                 id: prevButton
                 iconName: "av/skip_previous"
-                color: "white"
-                size: Units.dp(30)
+                iconColor: "white"
+                iconSize: 30
                 MouseArea {
                     anchors.fill: parent
                     onClicked: player.playlist.prev()
                 }
              }
-            IconButton {
+            FluidControls.IconButton {
                 id: playButton
                 iconName: "av/play_arrow"
-                color: "white"
-                size: Units.dp(30)
+                iconColor: "white"
+                iconSize: 30
                 /*MouseArea {
                     anchors.fill: parent
                     onPressAndHold: player.stop()
                 }*/
              }
-            IconButton {
+            FluidControls.IconButton {
                 id: nextButton
                 iconName: "av/skip_next"
-                color: "white"
-                size: Units.dp(30)
+                iconColor: "white"
+                iconSize: 30
                 MouseArea {
                     anchors.fill: parent
                     onClicked: player.playlist.next()
@@ -88,7 +87,7 @@ Rectangle {
             Rectangle {
                 height: playButton.height
                 color: "transparent"
-                width: (bottomBar.width - bottomBar.anchors.leftMargin - bottomBar.anchors.rightMargin) - playButton.width - rightButtons.width - rightButtons.spacing - Units.dp(20) - Units.dp(60)
+                width: (bottomBar.width - bottomBar.anchors.leftMargin - bottomBar.anchors.rightMargin) - playButton.width - rightButtons.width - rightButtons.spacing - 20 - 60
                 Label {
                     id: time
                     anchors.left: parent.left
@@ -100,13 +99,13 @@ Rectangle {
             }
             Row {
                id: rightButtons
-               width: cropButton.size * 5 + Units.dp(50) + Units.dp(100)
-               spacing: Units.dp(10)
-               IconButton {
+               width: cropButton.size * 5 + 50 + 100
+               spacing: 10
+               FluidControls.IconButton {
                     id: volumeButton
                     iconName: mute ? "av/volume_mute" : "av/volume_up"
-                    color: "white"
-                    size: Units.dp(30)
+                    iconColor: "white"
+                    iconSize: 30
                     property bool mute: player.volume == 0
                     onClicked: {
                         if(mute)
@@ -117,40 +116,39 @@ Rectangle {
                 }
                Slider {
                    value: player.volume
-                   darkBackground: true
-                   width: Units.dp(100)
-                   minimumValue: 0
-                   maximumValue: 100
+                   width: 100
+                   from: 0
+                   to: 100
                    onPressedChanged: {
                        if(pressed)
                            player.volume = Math.floor(value)
                    }
                }
 
-               IconButton {
+               FluidControls.IconButton {
                     id: playlistButton
                     iconName: "av/queue_music"
-                    color: "white"
-                    size: Units.dp(30)
+                    iconColor: "white"
+                    iconSize: 30
                     onClicked: {
                         playlistDrawer.open()
                     }
                 }
-               IconButton {
+               FluidControls.IconButton {
                     id: cropButton
                     iconName: "image/crop_16_9"
-                    color: "white"
-                    size: Units.dp(30)
+                    iconColor: "white"
+                    iconSize: 30
                     onClicked: {
                         if(player.state == "3")
                             root.height = Math.round((player.video.height / player.video.width) * (root.width + 16))
                     }
                 }
-               IconButton {
+               FluidControls.IconButton {
                     id: fsButton
                     iconName: root.fullscreen ? "navigation/fullscreen_exit" : "navigation/fullscreen"
-                    color: "white"
-                    size: Units.dp(30)
+                    iconColor: "white"
+                    iconSize: 30
                     onClicked: if(root.fullscreen) showNormal(); else showFullScreen();
                 }
             }

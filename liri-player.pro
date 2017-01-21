@@ -1,4 +1,4 @@
-QT += qml quick multimedia core
+QT += core qml quick quickcontrols2 multimedia
 
 SOURCES += src/main.cpp \
     src/cursor/cursor.cpp 
