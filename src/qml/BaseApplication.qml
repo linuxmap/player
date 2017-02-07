@@ -19,8 +19,8 @@ Item {
     Component.onCompleted: {
         var recents = application.settings.recents, r_l = recents.length;
         for (var i=r_l-1; i>=0; i--) {
-           application.recentlyPlayedModel.append(recents[i]);
-           console.log(JSON.stringify(recents[i]))
+            application.recentlyPlayedModel.append(recents[i]);
+            console.log(JSON.stringify(recents[i]))
         }
         if(cliFile)
             player.mrl = cliFile
@@ -31,8 +31,8 @@ Item {
     Component.onDestruction: {
         var recents = [], r_l = application.recentlyPlayedModel.count, item;
         for (var i=0; i<r_l; i++){
-             item = application.recentlyPlayedModel.get(i);
-             recents.push({"name": item.name, "url": item.url, "type": item.type, "artist" : item.artist})
+            item = application.recentlyPlayedModel.get(i);
+            recents.push({"name": item.name, "url": item.url, "type": item.type, "artist" : item.artist})
 
             console.log(JSON.stringify(item))
         }

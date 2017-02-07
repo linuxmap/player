@@ -15,4 +15,4 @@ BaseApplication {
         return newWindow
     }
 
- }
+}

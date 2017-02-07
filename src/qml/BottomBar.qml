@@ -63,7 +63,7 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: player.playlist.prev()
                 }
-             }
+            }
             FluidControls.IconButton {
                 id: playButton
                 iconName: "av/play_arrow"
@@ -73,7 +73,7 @@ Rectangle {
                     anchors.fill: parent
                     onPressAndHold: player.stop()
                 }*/
-             }
+            }
             FluidControls.IconButton {
                 id: nextButton
                 iconName: "av/skip_next"
@@ -83,7 +83,7 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: player.playlist.next()
                 }
-             }
+            }
             Rectangle {
                 height: playButton.height
                 color: "transparent"
@@ -98,10 +98,10 @@ Rectangle {
                 }
             }
             Row {
-               id: rightButtons
-               width: cropButton.size * 5 + 50 + 100
-               spacing: 10
-               FluidControls.IconButton {
+                id: rightButtons
+                width: cropButton.size * 5 + 50 + 100
+                spacing: 10
+                FluidControls.IconButton {
                     id: volumeButton
                     iconName: mute ? "av/volume_mute" : "av/volume_up"
                     iconColor: "white"
@@ -114,18 +114,18 @@ Rectangle {
                             player.volume = 0
                     }
                 }
-               Slider {
-                   value: player.volume
-                   width: 100
-                   from: 0
-                   to: 100
-                   onPressedChanged: {
-                       if(pressed)
-                           player.volume = Math.floor(value)
-                   }
-               }
+                Slider {
+                    value: player.volume
+                    width: 100
+                    from: 0
+                    to: 100
+                    onPressedChanged: {
+                        if(pressed)
+                            player.volume = Math.floor(value)
+                    }
+                }
 
-               FluidControls.IconButton {
+                FluidControls.IconButton {
                     id: playlistButton
                     iconName: "av/queue_music"
                     iconColor: "white"
@@ -134,7 +134,7 @@ Rectangle {
                         playlistDrawer.open()
                     }
                 }
-               FluidControls.IconButton {
+                FluidControls.IconButton {
                     id: cropButton
                     iconName: "image/crop_16_9"
                     iconColor: "white"
@@ -144,7 +144,7 @@ Rectangle {
                             root.height = Math.round((player.video.height / player.video.width) * (root.width + 16))
                     }
                 }
-               FluidControls.IconButton {
+                FluidControls.IconButton {
                     id: fsButton
                     iconName: root.fullscreen ? "navigation/fullscreen_exit" : "navigation/fullscreen"
                     iconColor: "white"

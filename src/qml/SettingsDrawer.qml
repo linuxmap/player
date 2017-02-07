@@ -54,10 +54,10 @@ Item {
                 radius: width*0.5
                 color: accentColorPicker.color
                 anchors {
-                        top: parent.top
-                        right: parent.right
-                        topMargin:5
-                        rightMargin: 15
+                    top: parent.top
+                    right: parent.right
+                    topMargin:5
+                    rightMargin: 15
                 }
                 MouseArea {
                     anchors.fill: parent
@@ -80,10 +80,10 @@ Item {
                 radius: width*0.5
                 color: primaryColorPicker.color
                 anchors {
-                        top: parent.top
-                        right: parent.right
-                        topMargin:5
-                        rightMargin: 15
+                    top: parent.top
+                    right: parent.right
+                    topMargin:5
+                    rightMargin: 15
                 }
                 MouseArea {
                     anchors.fill: parent

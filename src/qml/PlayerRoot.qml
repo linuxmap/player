@@ -17,9 +17,9 @@ Item {
     }
 
     function hideBars() {
-          topBar.opacity = 0
+        topBar.opacity = 0
         bottomBar.opacity = 0
-     }
+    }
 
     function restartBarsTimer() {
         showBars()
@@ -59,7 +59,7 @@ Item {
 
         }
 
-/* TODO:
+        /* TODO:
         onMediaPlayerPlaying: {
             currentMedia = mediaDescription;
             isAudio = (video.height == 0) ? true : false
@@ -104,29 +104,29 @@ Item {
         selectMultiple: true
         property bool toPlay
         Component.onCompleted : {
-              filedialog.accepted.connect(player.selected)
+            filedialog.accepted.connect(player.selected)
         }
     }
 
     Timer {
-      id: timer
-      interval: forceBars ? 9999999999 : 1500
-      repeat: false
-      onTriggered: hideBars()
+        id: timer
+        interval: forceBars ? 9999999999 : 1500
+        repeat: false
+        onTriggered: hideBars()
     }
 
     Rectangle {
-      id: shadow
-      color: Qt.rgba(0,0,0,0.1)
-      anchors.fill: parent
-      visible: false
-      MouseArea {
-          anchors.fill: parent
-          onClicked: {
-              playlistDrawer.close()
-              settingsDrawer.close()
-          }
-      }
+        id: shadow
+        color: Qt.rgba(0,0,0,0.1)
+        anchors.fill: parent
+        visible: false
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                playlistDrawer.close()
+                settingsDrawer.close()
+            }
+        }
     }
 
     SettingsDrawer { id: settingsDrawer }

@@ -23,10 +23,10 @@ MouseArea{
         }
     }
 
-   /* onEntered:{
+    /* onEntered:{
         if(!forceBars)
             top_bar.opacity = 1
-    } 
+    }
 
 
     onExited: {
@@ -96,17 +96,17 @@ MouseArea{
             else rFlag += "m"
 
             switch(rFlag){
-                case "lt":
-                case "rb": cursorShape = Qt.SizeFDiagCursor; break;
-                case "lb":
-                case "rt": cursorShape = Qt.SizeBDiagCursor; break;
-                case "ld":
-                case "rd":
-                case "lm":
-                case "rm": cursorShape = Qt.SizeHorCursor; break;
-                case "mt":
-                case "mb": cursorShape = Qt.SizeVerCursor; break;
-                default: cursorShape = Qt.ArrowCursor; break;
+            case "lt":
+            case "rb": cursorShape = Qt.SizeFDiagCursor; break;
+            case "lb":
+            case "rt": cursorShape = Qt.SizeBDiagCursor; break;
+            case "ld":
+            case "rd":
+            case "lm":
+            case "rm": cursorShape = Qt.SizeHorCursor; break;
+            case "mt":
+            case "mb": cursorShape = Qt.SizeVerCursor; break;
+            default: cursorShape = Qt.ArrowCursor; break;
             }
         }
     }

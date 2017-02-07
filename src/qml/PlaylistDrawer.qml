@@ -115,26 +115,26 @@ Item {
             height: 50
 
 
-        Button {
-            text: "add"
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                bottom: parent.bottom
+            Button {
+                text: "add"
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: parent.top
+                    bottom: parent.bottom
 
-                rightMargin: 30
-                leftMargin: 30
-                bottomMargin: 5
-                topMargin: 7
+                    rightMargin: 30
+                    leftMargin: 30
+                    bottomMargin: 5
+                    topMargin: 7
+                }
+                id: addbutton
+                Material.elevation: 2
+                onClicked: {
+                    filedialog.toPlay = false;
+                    filedialog.visible = true;
+                }
             }
-            id: addbutton
-            Material.elevation: 2
-            onClicked: {
-                filedialog.toPlay = false;
-                filedialog.visible = true;
-            }
-        }
         }
     }
 

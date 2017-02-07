@@ -5,7 +5,7 @@ import Fluid.Controls 1.0 as FluidControls
 
 Rectangle {
     id: top_bar
-    z:5
+    z: 5
     opacity: 1
     anchors {
         top: parent.top
@@ -14,8 +14,8 @@ Rectangle {
     }
     height: 60
     gradient: Gradient {
-        GradientStop { position: 0.0; color: root.noMedia ? theme.primaryColor :  Qt.rgba(0,0,0,0.4) }
-        GradientStop { position: 1.0; color: root.noMedia ? theme.primaryColor :  "transparent" }
+        GradientStop { position: 0.0; color: root.noMedia ? theme.primaryColor : Qt.rgba(0,0,0,0.4) }
+        GradientStop { position: 1.0; color: root.noMedia ? theme.primaryColor : "transparent" }
     }
     Behavior on opacity {
         NumberAnimation { duration: 500 }
